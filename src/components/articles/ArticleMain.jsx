@@ -1,69 +1,27 @@
-//articles.json 파일 불러오기
-import { useState } from "react";
-import ArticleHeader from "./ArticleHeader";
-import ArticleList from "./ArticleList";
-import articleData from "./articles.json";
-import ArticleWriter from "./ArticleWriter";
+// articles.json 파일 불러오기
+import ArticleTable from "./ArticleTable.jsx";
+import ArticleHeader from "./ArticleHeader.jsx";
+import ArticleList from "./ArticleList.jsx";
+import ArticleWriter from "./ArticleWriter.jsx";
+import ArticleWriter2 from "./ArticleWriter2.jsx";
+import { useSelector } from "react-redux";
+import Login from "../user/Login.jsx";
+
 const ArticleMain = () => {
-  const [articleDatas, setNewarticleData] = useState(articleData);
-  const [{ subject, name, email, content }, setNewList] = useState({
-    subject: "",
-    name: "",
-    email: "",
-    content: "",
-  });
-  const [state, setState] = useState(false);
-  const onSubjectChangeHandler = (event) => {
-    setNewList((prevData) => ({ ...prevData, subject: event.target.value }));
-  };
-  const onEmailChangeHandler = (event) => {
-    setNewList((prevData) => ({ ...prevData, name: event.target.value }));
-  };
-  const onContentChangeHandler = (event) => {
-    setNewList((prevData) => ({ ...prevData, email: event.target.value }));
-  };
-  const onNameChangeHandler = (event) => {
-    setNewList((prevData) => ({ ...prevData, content: event.target.value }));
-  };
-  const onSaveButtonClickHandler = () => {
-    setNewarticleData((prevData) => ({
-      articles: [
-        ...prevData.articles,
-        { id: prevData.articles.length + 1, subject, name, email, content },
-      ],
-    }));
-    setNewList({ subject: "", name: "", email: "", content: "" });
-  };
-  const onStateClickButtonHandler = () => {
-    setState((prevState) => !prevState);
-  };
-  //과제 힌트 논리연산자 const a = {true && "abc"}
+  // state를 변경했다!
+  // 컴포넌트가 재실행된다. (props의 전달 여부 관계 없이.)
+  console.log("ArticleMain");
+
+  const { count } = useSelector((store) => store.article);
+
   return (
     <div className="wrapper">
-      <header>게시글</header>
-      <table>
-        <thead>
-          <ArticleHeader />
-        </thead>
-        <tbody>
-          <ArticleList articleData={articleDatas} />
-        </tbody>
-      </table>
-      <div>
-        {!state ? (
-          <button onClick={onStateClickButtonHandler}>글쓰기</button>
-        ) : (
-          <ArticleWriter
-            inputData={{ subject, name, email, content }}
-            onStateClick={onStateClickButtonHandler}
-            onSubjectChange={onSubjectChangeHandler}
-            onEmailChange={onEmailChangeHandler}
-            onContentChange={onContentChangeHandler}
-            onNameChange={onNameChangeHandler}
-            onSaveButtonClick={onSaveButtonClickHandler}
-          />
-        )}
-      </div>
+      <div>{count}개의 게시글이 검색되었습니다.</div>
+      <ArticleTable>
+        <ArticleHeader />
+        <ArticleList />
+      </ArticleTable>
+      <ArticleWriter />
     </div>
   );
 };

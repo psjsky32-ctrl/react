@@ -1,13 +1,15 @@
 const ArticleHeader = () => {
   return (
-    <tr>
-      <th>ID</th>
-      <th>Subject</th>
-      <th>Content</th>
-      <th>Email</th>
-      <th>ViewCnt</th>
-      <th>Crtht</th>
-    </tr>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Subject</th>
+        <th>Writer</th>
+        <th>View</th>
+        <th>Write Datetime</th>
+      </tr>
+    </thead>
   );
 };
+
 export default ArticleHeader;

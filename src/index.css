@@ -25,6 +25,13 @@ body {
   text-decoration: line-through;
 }
 
+.TrendList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
 .wapper3 {
   display: flex;
   align-items: center;
@@ -263,54 +270,6 @@ button.confirm-cancel {
           border-right: 1px dashed #ccc;
         }
       }
-    }
-  }
-}
-
-.wrapper > .article-writer {
-  display: flex;
-  flex-direction: column;
-
-  & > button {
-    margin-top: 1rem;
-    padding: 0.5rem;
-  }
-}
-
-button.positive-button {
-  background-color: #00f6;
-  color: #00aa;
-  &:hover {
-    color: #fff;
-  }
-}
-
-button.negative-button {
-  background-color: #f006;
-  color: #a00a;
-
-  &:hover {
-    color: #fff;
-  }
-}
-
-.input-field {
-  margin-top: 1rem;
-
-  & > label {
-    font-weight: 700;
-  }
-
-  & > input,
-  & > textarea {
-    width: 100%;
-
-    padding: 0.625rem;
-    border: 1px solid #e7e7e7;
-    outline: 0;
-    border-radius: 0.5rem;
-    &:focus {
-      box-shadow: 0 0 1rem #00f6;
     }
   }
 }
